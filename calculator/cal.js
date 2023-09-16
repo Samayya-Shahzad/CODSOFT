@@ -6,18 +6,24 @@ Array.from( document.querySelectorAll('.button') ).forEach((button)=>{
 
     button.addEventListener('click', (event) => {
 
-        if(event.target.innerHTML == 'Clear'){                                    /* To compute the value */
+        if(event.target.innerHTML == 'Clear'){                                    /* To clear the value */
 
           display=" ";
           document.getElementById('input').value = " ";
 
         }
           
-        else if( event.target.innerHTML == '=' ) {                           /* to clear the input screen */
+        else if( event.target.innerHTML == '=' ) {                           /* to compute value*/
             
+                try{
                 const computation = eval(document.getElementById('input').value);
 
                 document.getElementById('input').value = display +"             = "+ computation;
+
+            }catch(error){
+          
+               document.getElementById('input').value = " Error ";
+           }
         }
 
         else{                                                                /* to display values */
